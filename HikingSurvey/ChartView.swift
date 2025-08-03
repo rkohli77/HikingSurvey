@@ -1,16 +1,12 @@
 import SwiftUI
 import Charts
 
-
 struct ChartView: View {
     var responses: [Response]
-
-
     init(responses: [Response]) {
         self.responses = responses.sorted { $0.score < $1.score }
     }
-
-
+    
     var body: some View {
         Chart(responses) { response in
             SectorMark(angle: .value("Type", 1), innerRadius: .ratio(0.75))
@@ -39,7 +35,6 @@ struct ChartView: View {
         .padding()
     }
 }
-
 
 #Preview {
     ContentView()

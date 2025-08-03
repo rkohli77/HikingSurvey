@@ -4,8 +4,8 @@ import Charts
 
 enum Sentiment: String, Plottable {
     case positive = "Positive"
-     case negative = "Negative"
-     case moderate = "Moderate"
+    case negative = "Negative"
+    case moderate = "Moderate"
     
     init(_ score: Double) {
         if score > 0.2 {

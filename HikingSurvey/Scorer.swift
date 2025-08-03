@@ -1,13 +1,11 @@
 import Foundation
 import NaturalLanguage
 
-
 class Scorer {
     let tagger = NLTagger(tagSchemes: [.sentimentScore])
     func score(_ text: String) -> (Double, NLLanguage?) {
         var sentimentScore = 0.0
         tagger.string = text
-        
         tagger.enumerateTags(
             in: text.startIndex..<text.endIndex,
             unit: .sentence,
@@ -18,8 +16,6 @@ class Scorer {
                     sentimentScore = score
                     return true
                 }
-
-
                 return false
             }
         return (sentimentScore, tagger.dominantLanguage)

@@ -1,22 +1,17 @@
 import SwiftUI
 
-
 struct ContentView: View {
     @FocusState private var textFieldIsFocused: Bool
     @State var responses: [Response] = []
     @State private var responseText = ""
     var scorer = Scorer()
-
-
+    
     func saveResponse(text: String) {
         let score = scorer.score(text)
-        let response = Response(text: text, score: score.0)
-        let lang = score.1?.rawValue
-        print("language is \(lang)")
+        let response = Response(text: text, score: score.0, language: score.1?.rawValue ?? "")
         responses.insert(response, at: 0)
     }
-
-
+    
     var body: some View {
         VStack {
             Text("Opinions on Hiking")
@@ -52,7 +47,6 @@ struct ContentView: View {
         .background(Color(white: 0.94))
     }
 }
-
 
 #Preview {
     ContentView()
